@@ -5,7 +5,7 @@ A production-style microservice-based bank management system built with Java, Sp
 ## 🏗️ Architecture
 
 API Gateway (Port 8080)
-│
+      │
 ┌─────┼──────────────────────┐
 │     │                      │
 User  Account              Transaction
