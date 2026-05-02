@@ -1,15 +1,9 @@
 package com.example.accountservice.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "accounts")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Account {
 
     @Id
@@ -20,14 +14,38 @@ public class Account {
     private String accountNumber;
 
     @Column(nullable = false)
-    private String accountType; // SAVINGS or CURRENT
+    private String accountType;
 
     @Column(nullable = false)
     private Double balance;
 
     @Column(nullable = false)
-    private Long userId; // links to User Service
+    private Long userId;
 
     @Column(nullable = false)
-    private String status; // ACTIVE or INACTIVE
+    private String status;
+
+    public Account() {}
+
+    public Account(Long id, String accountNumber, String accountType, Double balance, Long userId, String status) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = balance;
+        this.userId = userId;
+        this.status = status;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getAccountNumber() { return accountNumber; }
+    public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
+    public String getAccountType() { return accountType; }
+    public void setAccountType(String accountType) { this.accountType = accountType; }
+    public Double getBalance() { return balance; }
+    public void setBalance(Double balance) { this.balance = balance; }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

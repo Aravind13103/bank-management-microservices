@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  eureka-server:
+    build: ./eureka-server/Bank_management
+    ports:
+      - "8761:8761"
+    networks:
+      - bank-network
+
+  api-gateway:
+    build: ./api-gateway/api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+    networks:
+      - bank-network
+
+  user-service:
+    build: ./user-service/user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+    networks:
+      - bank-network
+
+  account-service:
+    build: ./account-service/account-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+    networks:
+      - bank-network
+
+  transaction-service:
+    build: ./transaction-service/transaction-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+    networks:
+      - bank-network
+
+networks:
+  bank-network:
+    driver: bridge

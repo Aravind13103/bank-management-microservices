@@ -12,11 +12,15 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class TransactionService {
 
     private final TransactionRepository transactionRepository;
     private final AccountClient accountClient;
+
+    public TransactionService(TransactionRepository transactionRepository, AccountClient accountClient) {
+        this.transactionRepository = transactionRepository;
+        this.accountClient = accountClient;
+    }
 
     // Deposit
     public Transaction deposit(String accountNumber, Double amount, String description) {
